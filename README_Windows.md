@@ -6,14 +6,21 @@ In this repository, we will be dabbling into the following areas:
 2. Load Testing with Locust
 ---
 
-## Setup of Virtual Environment 
-You can use Python virtual environment to isolate the Robot Framework related packages to avoid potential clashes in other Python packages and binaries for your other projects.
+## Prerequisites
+- For Windows, you will need to enable the `Windows Subsystem for Linux` (requires reboot to take effect) and do additional setup. 
+- Please refer to this article for guided walkthrough with images - https://www.ssl.com/how-to/enable-linux-subsystem-install-ubuntu-windows-10
 
-1. Create a Python virtual environment.
-`python3 -m venv <virtual_env_name>`
+- If time permits, you can setup a Linux VM (e.g. Ubuntu or any preferred Linux OS)
 
-2. Activate the python virtual environment.
-`source `
+**If you prefer not to do any additional setup, you can use Repl.it, a browser based IDE with terminal (console and shell).**
+- The instructions below will be based on using Repl.it.
+- A brief testing reveals that Repl is not able to meet the needs for load testing and mobile testing. 
+- If you have the terminal setup, please use the instructions in `README.md`
+
+---
+## Setup
+- Go to this Repl project:  https://repl.it/join/wvjjunfe-bernicecpz
+- Fork this project
 
 ---
 ### Activity 1 - Test Automation with Robot Framework
@@ -36,53 +43,25 @@ Let our starting point be at the Tablets section of the commerce test site.
 - Now that you are familiar with some of the keywords in SeleniumLibrary. Let's try `Then I navigate to laptops page`
 
 #### Test Execution 
-
-##### MacOS/Linux
+*The term directory and folder will be used interactively here*.
+- Click on the `shell` tag to access the terminal.
+- Check your present working directory with the command `ls` to list the files and folders
+- If you are not in the right directory, 
 - You can execute the script with the command `robot Activity1.robot`. 
 - If you would like to utilize the tags to run a specific test case, you can use either `-i` to include test cases with specific tags. E.g. `robot -i run Activity1.robot` which means only run test cases that have been tagged with 'run'.
 
 
-#### Optional Exercise: Mobile testing
+#### Optional Exercise: Mobile testing (Not workable on Repl.it)
+> I have attempted to install appium, however we do not have the permission to install anything beyond typical package manager.
 - The resources provided under `/native` includes a demo APK file and sample script from pCloudy's sample projects. 
 - If you have Android Studio and a local Appium Server installed. You can try running it locally on your computer. 
 - You can alternatively try the free trial on pCloudy's public device farm (https://www.pcloudy.com).
 
 ---
 
-### Activity 2 - Load Testing with Locust
+### Activity 2 - Load Testing with Locust (Not workable on Repl.it)
 The learning objective of this activity is to familiarize with Locust and observe how load testing works in a small scale.
 
-#### Setup
-1. **Install NPM packages for the sample Express project and Locust**
-```shell
-cd load_testing
-npm install
-pip install locust
-```
+> As the distributed mode requires multiple terminal windows, the Repl.it doesn't allow opening of more than 1 shell.
 
-2. **Run the sample Express project**
- - A sample project with GET and POST request API, is provided in this activity. Please run the following command to start the project.
-`node server.js` 
- - The database is [Nedb](https://github.com/louischatriot/nedb), using the persistent datastore  with automatic loading method.
-
-
-3. **Open another terminal to start Locust**
-- You will need to open 2 terminals - one for the master node and another for the worker node
-- By default, the locust test script filename is locustfile.py. If you have named it differently, you will need to specify the filename with the `-f` option.
-```shell
-# Master Node
-locust --master 
-
-# Worker Node
-locust --worker --master-host=<IP address of Master Node>
-```
-
-4. **Access the Web UI**
-- Open your browser and navigate to `http://localhost:8089`
-- You can input the number of users you want to simulate and how fast the number of users grow
-- Click `Start Swarming`
-
-5. **Interpretating the report**
-You can refer to this article which is informative in explaining the report details
-https://dev.to/jankaritech/performance-testing-with-locust-04-interpret-the-results-3hco
 

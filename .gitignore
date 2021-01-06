@@ -132,3 +132,8 @@ dmypy.json
 **/**/log.html
 **/**/report.html
 **/**/output*.xml
+
+# Node modules
+
+**/**/node_modules
+load_testing/node_modules
