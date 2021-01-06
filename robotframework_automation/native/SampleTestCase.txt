@@ -1,0 +1,55 @@
+*** Settings ***
+
+Library    AppiumLibrary
+Library    Process
+
+*** Test Cases ***
+Test Booking Flight Feature
+    Given I install and launch the App
+    Then I book a flight
+    Then I close all application
+
+*** Keywords ***
+Given I install and launch the App
+    Run Process  adb  install  -s "${emulatorId}"  "${currentPath}/pCloudyAppiumDemo.apk"
+    Open Application    http://127.0.0.1:4723/wd/hub   platformName=Android   deviceName=Pixel_3a_API_30  app=${currentPath}/pCloudyAppiumDemo.apk  appPackage=com.pcloudy.appiumdemo	appActivity=com.ba.mobile.LaunchActivity 
+
+Then I book a flight
+    Click Element   id=com.pcloudy.appiumdemo:id/accept 
+    Log To Console  Accept Button is clicked
+
+    Wait Until Page Contains Element  id=com.pcloudy.appiumdemo:id/flightButton  20
+    Click Element   id=com.pcloudy.appiumdemo:id/flightButton
+    Log To Console  Book a flight button clicked
+
+    Wait Until Page Contains Element  id=com.pcloudy.appiumdemo:id/spinnerfrom  20
+    Click Element   id=com.pcloudy.appiumdemo:id/spinnerfrom
+    Log To Console  From location drop down is clicked
+
+    Wait Until Page Contains Element  //*[@id='android:id/text1' or @text='Bangalore, India (BLR)']  20
+    Click Element   //*[@id='android:id/text1' or @text='Bangalore, India (BLR)']
+    Log To Console  From Location is selected
+
+    Click Element   id=com.pcloudy.appiumdemo:id/spinnerto
+    Log To Console  To location drop down is clicked  
+
+    Click Element   //*[@id='android:id/text1' or @text='Pune, India (PNQ)']
+    Log To Console  To location is selected 
+
+    Click Element   id=com.pcloudy.appiumdemo:id/singleTrip
+    Log To Console  One way trip is selected
+
+    Click Element   id=com.pcloudy.appiumdemo:id/txtdepart
+    Log To Console  Departure time is Selected
+
+    Wait Until Page Contains Element  //*[@id='android:id/button1' or @text='OK']  20
+    Click Element   //*[@id='android:id/button1' or @text='OK']
+    Log To Console  Departure time is Selected
+
+    Wait Until Page Contains Element  id=com.pcloudy.appiumdemo:id/searchFlights  20
+    Click Element   id=com.pcloudy.appiumdemo:id/searchFlights 
+    Log To Console  Search flight button is clicked
+  
+
+Then I close all application
+    Close All Applications
