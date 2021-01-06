@@ -82,6 +82,10 @@ locust --worker --master-host=<IP address of Master Node>
 - You can input the number of users you want to simulate and how fast the number of users grow
 - Click `Start Swarming`
 
+<img src="/img/loadtest.gif" alt="website interaction" style="height:40%;" />
+
+
+
 5. **Interpretating the report**
 You can refer to this article which is informative in explaining the report details
 https://dev.to/jankaritech/performance-testing-with-locust-04-interpret-the-results-3hco
