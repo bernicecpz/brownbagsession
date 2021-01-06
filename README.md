@@ -47,6 +47,7 @@ Let our starting point be at the Tablets section of the commerce test site.
 - If you have Android Studio and a local Appium Server installed. You can try running it locally on your computer. 
 - You can alternatively try the free trial on pCloudy's public device farm (https://www.pcloudy.com).
 
+<img src="/img/androidtesting.gif" alt="android mobile testing" style="height:40%;" />
 ---
 
 ### Activity 2 - Load Testing with Locust
@@ -82,7 +83,7 @@ locust --worker --master-host=<IP address of Master Node>
 - You can input the number of users you want to simulate and how fast the number of users grow
 - Click `Start Swarming`
 
-<img src="/img/loadtest.gif" alt="website interaction" style="height:40%;" />
+<img src="/img/loadtest.gif" alt="load testing" style="height:40%;" />
 
 
 
