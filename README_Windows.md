@@ -19,7 +19,7 @@ In this repository, we will be dabbling into the following areas:
 
 ---
 ## Setup
-- Go to this Repl project:  https://repl.it/join/wvjjunfe-bernicecpz
+- Go to this Repl project:  https://repl.it/@bernicecpz/RobotFramework
 - Fork this project
 
 ---
