@@ -5,6 +5,9 @@ In this repository, we will be dabbling into the following areas:
 1. Test Automation with Robot Framework
 2. Load Testing with Locust
 ---
+> **Note** 
+> - Windows in this case, is for users who have setup their Windows Linux subsystem.
+> - Values in angle brackets (<>) are placeholders. Please replace with appropriate values that is relevant to your environment's context.
 
 ## Setup of Virtual Environment 
 You can use Python virtual environment to isolate the Robot Framework related packages to avoid potential clashes in other Python packages and binaries for your other projects.
@@ -13,7 +16,43 @@ You can use Python virtual environment to isolate the Robot Framework related pa
 `python3 -m venv <virtual_env_name>`
 
 2. Activate the python virtual environment.
-`source `
+`source <virtual_env_name>/bin/activate`
+
+3. Install the required Python packages
+`python3 -m pip install -r requirements.txt`
+
+> For Windows user with Linux subsystem, please run with sudo
+
+4. At the end of the activity, please enter the follow command to exit from the virtual environment
+`deactivate`
+---
+##  Setup of chromedriver
+**MacOS**
+`brew cask install chromedriver`
+
+**Windows**
+- Install the latest stable version, chromedriver_win32.zip (https://chromedriver.storage.googleapis.com/index.html?path=87.0.4280.88/)
+- After extracting from zip, set the chromerdriver.exe to your PATH
+    - Search for **environment** > Click on `Edit the system environment variables`
+    - Add a new environment variable for the chromedriver.exe
+    - You must set the full path of the chromedriver.exe
+        - To get full path, `Shift` + right click on the chromedriver.exe to `Copy as path`
+    - **You must restart your computer for the PATH to take effect**
+- In your terminal, `sudo apt-get install -y chromium-browser`
+- To check for your Linux subsystem equivalent, enter `echo $PATH` 
+
+In your Activity1.robot under `/robotframework_automation/web/test-suites`,
+- Please include this under the Variables section
+```python
+*** Variables ***
+${CHROMEPATH}    <linux_equivalent_path_for_chromedriver.exe>
+``` 
+- Please include the `executable_option` in the following line to specify to use the chromedriver 
+```python
+# Find the following line
+Create Webdriver    Chrome    chrome_options=${chrome_options}    executable_path=${CHROMEPATH}
+```
+
 
 ---
 ### Activity 1 - Test Automation with Robot Framework
@@ -30,7 +69,7 @@ Let our starting point be at the Tablets section of the commerce test site.
 > **Tip!** 
 > Try using the Chrome Extension, Robotcorder, if you are not sure where/how to start. 
 
-<img src="/img/activity1.gif" alt="website interaction" style="height:40%;" />
+<img src="/img/activity1.gif" alt="website interaction" />
 
 #### Exercise 2
 - Now that you are familiar with some of the keywords in SeleniumLibrary. Let's try `Then I navigate to laptops page`
@@ -40,14 +79,15 @@ Let our starting point be at the Tablets section of the commerce test site.
 ##### MacOS/Linux
 - You can execute the script with the command `robot Activity1.robot`. 
 - If you would like to utilize the tags to run a specific test case, you can use either `-i` to include test cases with specific tags. E.g. `robot -i run Activity1.robot` which means only run test cases that have been tagged with 'run'.
+    - Alternatively, if you are are the `/robotframework_automation` directory, you can run at the test-suite level with the command `robot -i run test-suites`
 
 
 #### Optional Exercise: Mobile testing
 - The resources provided under `/native` includes a demo APK file and sample script from pCloudy's sample projects. 
-- If you have Android Studio and a local Appium Server installed. You can try running it locally on your computer. 
+- If you have Android Studio and a local Appium Server installed, you can try running it locally on your computer. 
 - You can alternatively try the free trial on pCloudy's public device farm (https://www.pcloudy.com).
 
-<img src="/img/androidtesting.gif" alt="android mobile testing" style="height:40%;" />
+<img src="/img/androidtesting.gif" alt="android mobile testing"/>
 ---
 
 ### Activity 2 - Load Testing with Locust
@@ -83,7 +123,7 @@ locust --worker --master-host=<IP address of Master Node>
 - You can input the number of users you want to simulate and how fast the number of users grow
 - Click `Start Swarming`
 
-<img src="/img/loadtest.gif" alt="load testing" style="height:40%;" />
+<img src="/img/loadtest.gif" alt="load testing"/>
 
 
 

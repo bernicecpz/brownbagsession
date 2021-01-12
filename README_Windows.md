@@ -8,19 +8,32 @@ In this repository, we will be dabbling into the following areas:
 
 ## Prerequisites
 - For Windows, you will need to enable the `Windows Subsystem for Linux` (requires reboot to take effect) and do additional setup. 
-- Please refer to this article for guided walkthrough with images - https://www.ssl.com/how-to/enable-linux-subsystem-install-ubuntu-windows-10
-
-- If time permits, you can setup a Linux VM (e.g. Ubuntu or any preferred Linux OS)
+    - Please refer to this article for guided walkthrough with images - https://www.ssl.com/how-to/enable-linux-subsystem-install-ubuntu-windows-10
+    - If time permits, you can setup a Linux VM (e.g. Ubuntu or any preferred Linux OS)
+- If you are able to set up the either options available, please refer to the `README.md`.
 
 **If you prefer not to do any additional setup, you can use Repl.it, a browser based IDE with terminal (console and shell).**
 - The instructions below will be based on using Repl.it.
-- A brief testing reveals that Repl is not able to meet the needs for load testing and mobile testing. 
+- A brief testing reveals that Repl is not able to meet the needs for load testing and mobile testing. You can still enjoy the GIF in the README.md XD
 - If you have the terminal setup, please use the instructions in `README.md`
 
 ---
-## Setup
+
+## Setup (Repl.it)
 - Go to this Repl project:  https://repl.it/@bernicecpz/RobotFramework
 - Fork this project
+
+---
+## How to access the repository I have cloned?
+For Linux distribution, Windows has stored it in your local AppData folder. 
+
+A general guide  of the expected filepath to find via your File Explorer 
+`%userprofile%\AppData\Local\Packages\<DISTRO_FOLDER>\LocalState\rootfs`
+
+> For the value of DISTRO_FOLDER
+> If you are using Ubuntu LTS, you should try to find the folder prefixed as `CanonicalGroupLimited.UbuntuonWindows`
+
+For more information: https://www.howtogeek.com/261383/how-to-access-your-ubuntu-bash-files-in-windows-and-your-windows-system-drive-in-bash/
 
 ---
 ### Activity 1 - Test Automation with Robot Framework
